@@ -9,6 +9,8 @@ This demo is meant to be a test harness to show how Okta can serve as an externa
 
 In order for this demo to work, you must first set up Okta and set up your API Gateway using the instructions in the [Okta API Center](https://github.com/tom-smith-okta/okta-api-center).
 
+The public version of this demo is [here](https://okta-api-am.herokuapp.com/).
+
 ## Prerequisites
 
 To run this app, you will need the following:
