@@ -1,0 +1,47 @@
+
+{
+	"okta": {
+		"tenant": "https://partnerpoc.oktapreview.com",
+		"issuer": "https://partnerpoc.oktapreview.com/oauth2/ausce8ii5wBzd0zvQ0h7",
+		"client_id": "0oackbggxnLe1jjl00h7"
+	},
+
+	"gateways": {
+		"apigee": {
+			"display_name": "Apigee",
+			"links": {
+				"Integration Guide": "https://github.com/tom-smith-okta/okta-apigee",
+				"Flow: Getting an access token": "https://drive.google.com/file/d/1ENgxK5dvyvxAuk1VNqShI2v10US2W6VX/view?usp=sharing",
+				"Flow: Token -> Apigee": "https://drive.google.com/file/d/1JjYsjQEHvo1nCIRdwOQwIePmiK3pzPWB/view?usp=sharing"
+			},
+			"proxy_uri": "https://tomsmith-eval-prod.apigee.net/solar-system"
+		},
+		"aws": {
+			"display_name": "Amazon API Gateway",
+			"links": {
+				"Integration Guide": "https://github.com/tom-smith-okta/okta-api-center/tree/master/gateways/aws",
+				"Lambda authorizer": "https://github.com/tom-smith-okta/node-lambda-oauth2-jwt-authorizer/tree/tsmith/update",
+				"Flow: Getting an access token": "https://drive.google.com/file/d/1ENgxK5dvyvxAuk1VNqShI2v10US2W6VX/view?usp=sharing",
+				"Flow: Token -> Amazon API Gateway": "https://drive.google.com/file/d/13JHxmLQCumR6WqIC2clvhz3-09dKOkki/view?usp=sharing"
+			},
+			"proxy_uri": "https://530kw7hqg8.execute-api.us-east-2.amazonaws.com/test"
+		},
+		"kong": {
+			"display_name": "Kong",
+			"links": {
+				"Integration Guide": "https://github.com/tom-smith-okta/okta-api-center/tree/master/gateways/kong",
+				"Flow: Getting an access token": "https://drive.google.com/file/d/1ENgxK5dvyvxAuk1VNqShI2v10US2W6VX/view?usp=sharing"
+			},
+			"proxy_uri": "http://ec2-13-59-32-110.us-east-2.compute.amazonaws.com:8000"
+		},
+		"mulesoft": {
+			"display_name": "Mulesoft",
+			"links": {
+				"Integration Guide": "https://github.com/tom-smith-okta/okta-api-center/tree/master/gateways/mulesoft",
+				"Architecture": "https://drive.google.com/file/d/1f9NAwWBV2MGU43ZeiYJdBh1oZSmqhXr-/view?usp=sharing"
+			},
+			"proxy_uri": "http://okta-solar-system.cloudhub.io"
+		}
+	}
+
+}

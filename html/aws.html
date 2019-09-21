@@ -1,0 +1,5 @@
+
+<h4>Okta + Amazon API Gateway</h4>
+
+<p>In this example, Amazon API Gateway is proxying a "solar system" API. When a resource is requested, Amazon API Gateway passes the access token (jwt) to a Lambda function. The Lambda function verifies the jwt against the key from Okta authorization server's jwks endpoint, constructs an AWS access policy dynamically, and sends the results back to the Gateway. If the policy contains the appropriate grants for the endpoint being requested, the Gateway passes the request on to the target API endpoint.
+</p>

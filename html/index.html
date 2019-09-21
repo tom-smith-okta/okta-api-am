@@ -1,0 +1,93 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+
+	<meta charset='utf-8' />
+	<meta name='viewport' content='width=device-width, initial-scale=1' />
+
+	<!-- ******* TITLE OF PAGE ******** -->
+
+	<title>Okta API Access Management</title>
+
+	<link rel="shortcut icon" href="https://www.okta.com/sites/all/themes/developer/favicon.ico" type="image/vnd.microsoft.icon" />
+
+	<!-- ******* CSS *******************-->
+
+	<!-- BOOTSTRAP CSS -->
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<!-- ******* JAVASCRIPT *******************-->
+
+	<script
+		src="https://code.jquery.com/jquery-3.2.1.min.js"
+		integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+		crossorigin="anonymous"></script>
+
+	<script src = 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>
+
+</head>
+
+<body>
+<!-- Wrapper -->
+<div class="container">
+
+			<!-- Static navbar -->
+			<nav class="navbar navbar-default">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="#">Okta API Center</a>
+					</div>
+					<div id="navbar" class="navbar-collapse collapse">
+						<ul class="nav navbar-nav">
+
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Gateways <span class="caret"></span></a>
+								<ul class="dropdown-menu">
+{{gateway_list}}
+								</ul>
+							</li>
+
+							<li><a href="https://developer.okta.com/use_cases/api_access_management/" target="_blank">Okta API AM</a></li>
+
+							<li><a href="https://partnerpoc.oktapreview.com/oauth2/v1/authorize?idp=0oanfgh4kuGV3SBzm0h7&client_id=0oanfasmgdTWNt6K50h7&response_type=id_token&response_mode=fragment&scope=openid&redirect_uri=https://partnerpoc.oktapreview.com&state=somestate&nonce=somenonce" target="_blank">View Okta tenant (Okta only)</a></li>
+
+						</ul>
+
+						<ul class="nav navbar-nav navbar-right">
+							<li><a href="/">Okta API Center</a></li>
+						</ul>
+
+					</div><!--/.nav-collapse -->
+				</div><!--/.container-fluid -->
+			</nav>
+	<div class="well" style="background-color: rgb(234, 239, 247)">
+		<div class="row" style="vertical-align: top">
+			<div class="col-md-6" style="vertical-align: top">
+
+				<p>Okta is a standards-compliant OAuth 2.0 authorization server and a certified OpenID Provider.</p>
+
+				<p>The OAuth 2.0 API provides API security via scoped access tokens, and OpenID Connect provides user authentication and an SSO layer which is lighter and easier to use than SAML.</p>
+
+				<p>This site shows how Okta integrates with several leading API Management solutions.</p>
+
+			</div>
+			<div class="col-md-6" style="vertical-align: top">
+
+				<p>Some of Okta's API Partners include:</p>
+
+				<ul>
+{{gateway_list}}
+				</ul>
+
+			</div>
+	</div>
+
+</div>
+</body>
+</html>
