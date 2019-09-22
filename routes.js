@@ -42,10 +42,10 @@ module.exports = function (app) {
 
 	app.get('/:gateway', function(req, res, next) {
 
+		req.session.gateway = req.params.gateway
+
 		get_page(req.params.gateway, function(err, webPage) {
 			if (err) { throw new Error(err) }
-
-			req.session.gateway = req.params.gateway;
 
 			res.send(webPage);
 		});
@@ -127,17 +127,37 @@ module.exports = function (app) {
 	});
 
 	app.post('/getData', function(req, res, next) {
+
 		var endpoint = req.body.endpoint;
 
-		console.log("the requested endpoint is: " + endpoint);
+		console.log("the requested endpoint is: " + endpoint)
 
-		console.log("the access_token token is: \n" + req.session.access_token + "\n");
+		//*******************************************/
+
+		var access_token = ""
+
+		if (req.session.hasOwnProperty('access_token')) {
+			access_token = req.session.access_token
+		}
+		else {
+			access_token = "there is no access_token in the session"
+		}
+
+		console.log("the access token in the session is: " + access_token)
+
+		//*******************************************/
 
 		var gateway = req.session.gateway;
+
+		console.log("the gateway is: \n" + gateway + "\n");
+
+		//*******************************************/
 
 		var url = config.gateways[gateway].proxy_uri + "/" + req.body.endpoint;
 
 		console.log("the url is: " + url)
+
+		//*******************************************/
 
 		var options = {
 			method: 'GET',
