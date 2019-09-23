@@ -30,22 +30,16 @@
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-51670359-3"></script>
 	<script>
-	  window.dataLayer = window.dataLayer || [];
-	  function gtag(){dataLayer.push(arguments);}
-	  gtag('js', new Date());
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
 
-	  gtag('config', 'UA-51670359-3');
+		gtag('config', 'UA-51670359-3');
 	</script>
 
 	<script>
 
 	window.onload = function() {
-
-		// look for login url in local storage
-		// just for reference
-		if (localStorage.getItem("authURI")) {
-			console.log("authn uri: " + localStorage.getItem("authURI"));
-		}
 
 		// look for parameters in url
 		if (window.location.hash) {
@@ -74,7 +68,11 @@
 
 		// for debugging user sessions
 		checkForOktaSession();
-	};
+
+		console.log("the authorize uri for silver scope is:\n" + get_authorize_uri("silver"))
+		console.log("the authorize uri for gold + silver scope is:\n" + get_authorize_uri("gold"))
+
+	}
 
 	</script>
 
@@ -105,7 +103,6 @@
 							withCredentials: true
 						},
 						success: function (data) {
-							console.log("the given_name is: " + data.profile.firstName);
 							$("#username").html(data.profile.firstName)
 						},
 						error: function (textStatus, errorThrown) {
@@ -149,6 +146,10 @@
 
 				var obj = JSON.parse(data.access_token_introsp_response);
 
+				console.log("showing the access token here just for illustration.")
+
+				console.log("in the code flow, this token would not be sent to the browser.")
+
 				console.log("access token:")
 
 				console.log(data.access_token)
@@ -164,6 +165,22 @@
 				$("#getStarted").hide();
 			}
 		});
+	}
+
+	function get_authorize_uri(scope) {
+
+		var uri = '{{okta_issuer}}/v1/authorize?response_mode=fragment'
+		uri += '&response_type=code&client_id={{client_id}}&redirect_uri={{redirect_uri}}'
+
+		uri += '&state=' + getNonce();
+		uri += '&nonce=' + getNonce();
+		uri += '&prompt=login&scope=openid';
+
+		if (scope == "silver" || scope == "gold") { uri += " http://myapp.com/scp/silver"; }
+
+		if (scope == "gold") { uri += " http://myapp.com/scp/gold"; }
+
+		return encodeURI(uri)
 	}
 
 	// send the requested endpoint ("planets" or "moons")
@@ -220,27 +237,11 @@
 		});
 	}
 
-	function redirectToOkta(level) {
+	function redirectToOkta(scope) {
 		signout( function(error, status) {
 			if (error) { console.log("could not sign the user out."); }
 			else {
-				console.log("signed the user out successfully.");
-
-				var uri = '{{okta_issuer}}/v1/authorize?response_mode=fragment&response_type=code&client_id={{client_id}}&redirect_uri={{redirect_uri}}'
-
-				uri += '&state=' + getNonce();
-				uri += '&nonce=' + getNonce();
-				uri += '&prompt=login&scope=openid';
-
-				if (level == "silver" || level == "gold") { uri += " http://myapp.com/scp/silver"; }
-
-				if (level == "gold") { uri += " http://myapp.com/scp/gold"; }
-
-				localStorage.setItem("authURI", uri);
-
-				console.log("authn URI: " + uri);
-
-				window.location = uri;
+				window.location = get_authorize_uri(scope)
 			}
 		});
 	}
