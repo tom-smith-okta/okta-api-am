@@ -15,6 +15,8 @@ var config = JSON.parse(config_raw)
 
 console.dir(config)
 
+const valid_routes = ['aws', 'apigee', 'kong', 'mulesoft']
+
 //*******************************************/
 
 module.exports = function (app) {
@@ -44,11 +46,16 @@ module.exports = function (app) {
 
 		req.session.gateway = req.params.gateway
 
-		get_page(req.params.gateway, function(err, webPage) {
-			if (err) { throw new Error(err) }
+		if (!(valid_routes.includes(req.session.gateway))) {
+			res.sendStatus(404)
+		}
+		else {
+			get_page(req.params.gateway, function(err, webPage) {
+				if (err) { throw new Error(err) }
 
-			res.send(webPage);
-		});
+				res.send(webPage)
+			})
+		}
 	});
 
 	app.post('/getAccessToken', function(req, res, next) {
