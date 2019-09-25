@@ -10,9 +10,8 @@
 		"apigee": {
 			"display_name": "Apigee",
 			"links": {
-				"Integration Guide": "https://github.com/tom-smith-okta/okta-apigee",
-				"Flow: Getting an access token": "https://drive.google.com/file/d/1ENgxK5dvyvxAuk1VNqShI2v10US2W6VX/view?usp=sharing",
-				"Flow: Token -> Apigee": "https://drive.google.com/file/d/1JjYsjQEHvo1nCIRdwOQwIePmiK3pzPWB/view?usp=sharing"
+				"Integration Guide": "https://github.com/tom-smith-okta/okta-api-center/tree/master/gateways/apigee",
+				"flow diagram": "https://drive.google.com/file/d/1WjJbLMvISDVgrR4OOPtTADKEEJ71rpTr/view?usp=sharing"
 			},
 			"proxy_uri": "https://tomsmith-eval-prod.apigee.net/solar-system"
 		},
@@ -43,5 +42,4 @@
 			"proxy_uri": "http://okta-solar-system.cloudhub.io"
 		}
 	}
-
 }

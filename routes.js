@@ -269,6 +269,7 @@ function get_page(gateway, callback) {
 				page = page.replace(/{{proxy_uri}}/g, config.gateways[gateway].proxy_uri)
 				page = page.replace(/{{redirect_uri}}/g, get_redirect_uri(gateway))
 				page = page.replace(/{{title}}/g, get_title(gateway))
+				page = page.replace(/{{integration_guide_href}}/g, config.gateways[gateway].links["Integration Guide"])
 
 				return callback(null, page);
 
