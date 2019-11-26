@@ -13,7 +13,7 @@
 				"Integration Guide": "https://github.com/tom-smith-okta/okta-api-center/tree/master/gateways/apigee",
 				"flow diagram": "https://drive.google.com/file/d/1WjJbLMvISDVgrR4OOPtTADKEEJ71rpTr/view?usp=sharing"
 			},
-			"proxy_uri": "https://tomsmith-eval-prod.apigee.net/solar-system"
+			"proxy_uri": "http://amer-api-partner14-prod.apigee.net/solar-system"
 		},
 		"aws": {
 			"display_name": "Amazon API Gateway",
