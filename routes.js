@@ -21,6 +21,10 @@ const valid_routes = ['aws', 'apigee', 'kong', 'mulesoft']
 
 module.exports = function (app) {
 
+	app.get('/favicon.ico', function(req, res, next) {
+		res.sendStatus(200);
+	});
+
 	app.get('/', function(req, res, next) {
 
 		fs.readFile('./html/index.html', 'utf8', (error, page) => {
@@ -36,10 +40,6 @@ module.exports = function (app) {
 				res.send(page);
 			});
 		});
-	});
-
-	app.get('/favicon.ico', function(req, res, next) {
-		res.sendStatus(200);
 	});
 
 	app.get('/:gateway', function(req, res, next) {
